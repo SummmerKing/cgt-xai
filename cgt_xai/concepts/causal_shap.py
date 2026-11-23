@@ -125,7 +125,7 @@ class LinearMechanisms:
         self.topo_order: List[str] = []
 
     def fit(self, X: pd.DataFrame) -> 'LinearMechanisms':
-        # topological order (with robust fallback)
+        # topological order (with fallback)
         try:
             self.topo_order = list(nx.topological_sort(self.dag))
         except Exception:

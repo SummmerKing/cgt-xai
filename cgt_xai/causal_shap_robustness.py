@@ -744,12 +744,8 @@ def run_robustness_analysis_single(
     for f in features:
         print(f"  {f:25s}  gamma={gamma[f]:.6f}")
 
-    # Generated ONCE, reused for EVERY run (baseline + all epsilon values).
-    # This ensures that baseline and perturbed SHAP estimates differ ONLY
-    # due to the edge-weight perturbation, not due to different:
-    #   - test instance selection
-    #   - permutation orders
-    #   - SEM Gaussian noise draws
+    # drawn once and shared by every run (baseline and all epsilons), so estimates differ only
+    # through the edge-weight perturbation: same test instances, permutation orders and SEM noise
     k = min(cfg["k_instances"], len(Xte))
     instance_indices = master_rng.choice(len(Xte), size=k, replace=False)
     perm_seeds  = [int(master_rng.integers(0, 2**32)) for _ in range(cfg["n_perms"])]
