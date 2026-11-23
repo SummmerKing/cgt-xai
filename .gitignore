@@ -17,4 +17,5 @@ output*/
 
 # third-party code, installed separately (see README)
 DAGMA-DCE/
-causal_bayesian_op/DrBO/
+experiments/causal_discovery/drbo/DrBO/
+!docs/*.png
