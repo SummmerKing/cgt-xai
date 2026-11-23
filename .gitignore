@@ -1,0 +1,20 @@
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+.vscode/
+hf_cache/
+
+# generated outputs
+*.csv
+*.png
+*.jpg
+*.jpeg
+*.pdf
+*.xlsx
+output*/
+**/output/
+
+# third-party code, installed separately (see README)
+DAGMA-DCE/
+causal_bayesian_op/DrBO/
