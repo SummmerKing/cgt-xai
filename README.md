@@ -1,16 +1,14 @@
 # Cooperative Game Theory for Explainable AI
 
-[![tests](https://github.com/SummmerKing/cgt-xai/actions/workflows/tests.yml/badge.svg)](https://github.com/SummmerKing/cgt-xai/actions/workflows/tests.yml)
+This repository contains the code for a project at the Game Theory Lab, IISc, on feature attribution and data valuation with cooperative game theory. An early version was presented at the Foundations of Ethical AI workshop (IIIT Hyderabad).
 
-Feature attribution and data valuation with cooperative game theory. A model's performance on a subset of features (or training points) defines a coalitional game, and each solution concept of that game is a different way to explain the model. Most XAI work uses only the Shapley value. This project asks what the other classical concepts (least core, nucleolus, Gately point, power indices) say about the same model, how they behave when features are causally related, and how faithful and robust each one is.
-
-Joint work at the Game Theory Lab, IISc. An early version was presented at the Foundations of Ethical AI workshop (IIIT Hyderabad).
+A model's performance on a subset of features (or training points) defines a coalitional game, and each solution concept of that game is a different way to explain the model. Most XAI work uses only the Shapley value. This project asks what the other classical concepts (least core, nucleolus, Gately point, power indices) say about the same model, how they behave when features are causally related, and how faithful and robust each one is.
 
 ![Feature attributions by solution concept](docs/pima_feature_attribution.png)
 
 *Pima diabetes, logistic regression. v(S) is the test accuracy on feature subset S above the majority-class baseline, and every concept splits v(N) among the features. The concepts agree on the dominant feature (glucose) but differ sharply on the weaker ones. On a 154-sample test set, features that add little can have negative shares. Reproduce with `python examples/feature_attribution.py`.*
 
-## The library
+## The Library
 
 `cgt_xai/` is an installable package.
 
@@ -35,6 +33,15 @@ from cgt_xai.concepts.least_core import exact_least_core
 phi = exact_shapley_value(utility).values
 lc = exact_least_core(utility)      # lc.values, lc.subsidy (the least-core epsilon)
 ```
+
+## Repository Structure
+
+- **cgt_xai/**: the library described above.
+- **experiments/**: one folder per question, listed below.
+- **feature_data_valuation/**: the first stage of the project, with its own earlier implementation of the concepts.
+- **examples/**: a short script that reproduces the figure above.
+- **datasets/**: preprocessed datasets as `.npz` files.
+- **tests/**: checks of every concept on games with known answers.
 
 ## Experiments
 
